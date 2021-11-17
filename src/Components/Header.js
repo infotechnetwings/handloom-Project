@@ -3,12 +3,82 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeCart } from "../redux/actions/productsActions";
 import { MobileHeader } from "./MobileHeader";
+import { toast } from "react-toastify";
 
 export const Header = () => {
-  const [cart, setCart] = useState();
-  const product = useSelector((state) => state.addToCart);
+  const product = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const [searchProduct, setSearchProduct] = useState([
+    {
+      id: 1,
+      title: "Check Textured Coat",
+      category: "Coat",
+      price: "175.4",
+      tags: "coat check textured camel brown long sleeves buttoned cuffs",
+    },
+    {
+      id: 2,
+      title: "Contrast Check Coat",
+      category: "Coat",
+      price: "155.4",
+      tags: "coat camel black grey marl lapel collar hip flap pockets",
+    },
+    {
+      id: 3,
+      title: "White Coat",
+      category: "Coat",
+      price: "125.4",
+      tags: "coat camel white short sleeves double-breasted button",
+    },
+    {
+      id: 4,
+      title: "Basic Hoodie",
+      category: "Hoodies / SweatShirts",
+      price: "55.4",
+      tags: "hoodie solid plain purple long baggy hood",
+    },
+    {
+      id: 5,
+      title: "Basic Hoodie",
+      category: "Hoodies / SweatShirts",
+      price: "55.4",
+      tags: "hoodie solid plain black long baggy hood",
+    },
+    {
+      id: 6,
+      title: "Basic short Hoodie",
+      category: "Hoodies / SweatShirts",
+      price: "55.4",
+      tags: "hoodie solid plain gray grey short hood",
+    },
+  ]);
   var total = 0;
+  const notify = () => {
+    toast.error("item removed from cart", {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+  const handleChange = (e) => {
+    const { value } = e.target;
+    console.log(value);
+    const search = value;
+    searchProduct.filter((product) => {
+      if (
+        product.tags.toLowerCase().includes(search) ||
+        product.title.toLowerCase().includes(search) ||
+        product.category.toLowerCase().includes(search)
+      ) {
+        console.log(searchProduct, "search array");
+        return searchProduct;
+      }
+    });
+  };
   return (
     <>
       <header className="header header-2 header-intro-clearance">
@@ -53,6 +123,7 @@ export const Header = () => {
                       id="q"
                       placeholder="Search product ..."
                       required
+                      onChange={handleChange}
                     />
                     <button className="btn btn-primary" type="submit">
                       <i className="icon-search"></i>
@@ -92,7 +163,7 @@ export const Header = () => {
                 <div className="dropdown-menu dropdown-menu-right">
                   <div className="dropdown-cart-products">
                     {product.map((item) => {
-                      total += item.price;
+                      total += item.price * item.qty;
                       return (
                         <div className="product" key={item.id}>
                           <div className="product-cart-details">
@@ -101,8 +172,10 @@ export const Header = () => {
                             </h4>
 
                             <span className="cart-product-info">
-                              <span className="cart-product-qty">1</span>x ₹{" "}
-                              {item.price}
+                              <span className="cart-product-qty">
+                                {item.qty}
+                              </span>
+                              x ₹ {item.price}
                             </span>
                           </div>
 
@@ -112,7 +185,10 @@ export const Header = () => {
                             </Link>
                           </figure>
                           <Link
-                            onClick={() => dispatch(removeCart(item))}
+                            onClick={() => {
+                              dispatch(removeCart(item));
+                              notify();
+                            }}
                             className="btn-remove"
                             title="Remove Product"
                           >

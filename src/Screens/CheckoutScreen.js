@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const CheckoutScreen = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const product = useSelector((state) => state.addToCart);
+  const product = useSelector((state) => state.cart);
   const location = useLocation();
   const [checkoutDetail, setCheckoutDetail] = useState({
     firstName: "",
@@ -96,24 +96,6 @@ export const CheckoutScreen = () => {
       <div className="page-content">
         <div className="checkout">
           <div className="container">
-            <div className="checkout-discount">
-              <form action="#">
-                <input
-                  type="text"
-                  className="form-control"
-                  required
-                  id="checkout-discount-input"
-                />
-                <label
-                  htmlFor="checkout-discount-input"
-                  className="text-truncate"
-                >
-                  Have a coupon?
-                  <span>Click here to enter your code</span>
-                </label>
-              </form>
-            </div>
-
             <form action="#">
               <div className="row">
                 <div className="col-lg-9">
@@ -222,6 +204,7 @@ export const CheckoutScreen = () => {
                       type="checkbox"
                       className="custom-control-input"
                       id="checkout-create-acc"
+                      checked={true}
                       onChange={handleChange}
                     />
                     <label
@@ -229,20 +212,6 @@ export const CheckoutScreen = () => {
                       htmlFor="checkout-create-acc"
                     >
                       Create an account?
-                    </label>
-                  </div>
-
-                  <div className="custom-control custom-checkbox">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="checkout-diff-address"
-                    />
-                    <label
-                      className="custom-control-label"
-                      htmlFor="checkout-diff-address"
-                    >
-                      Ship to a different address?
                     </label>
                   </div>
 

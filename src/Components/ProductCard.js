@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../redux/actions/productsActions";
 import { toast } from "react-toastify";
+
 export const ProductCard = () => {
   const product = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();

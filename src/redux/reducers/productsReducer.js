@@ -28,19 +28,31 @@ export const selectedProductsReducer = (state = {}, { type, payload }) => {
 export const addToCartReducer = (state = cart, { type, payload }) => {
   switch (type) {
     case ActionTypes.ADD_TO_CART:
-      return (cart = cart.concat(payload));
-    default:
-      return state;
-  }
-};
+      const exist = state.find((x) => x.id === payload.id);
+      if (exist) {
+        return state.map((x) =>
+          x.id === payload.id ? { ...x, qty: x.qty + 1 } : x
+        );
+      } else {
+        return [
+          ...state,
+          {
+            ...payload,
+            qty: 1,
+          },
+        ];
+      }
 
-export const removeCart = (state = cart, { type, payload }) => {
-  switch (type) {
     case ActionTypes.REMOVE_CART:
-      cart = state.filter((item) => {
-        return item.id !== payload.id;
-      });
-      return state;
+      const exist1 = state.find((x) => x.id === payload.id);
+      if (exist1.qty === 1) {
+        return state.filter((x) => x.id !== exist1.id);
+      } else {
+        return state.map((x) => {
+          return x.id === payload.id ? { ...x, qty: x.qty - 1 } : x;
+        });
+      }
+
     default:
       return state;
   }

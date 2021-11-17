@@ -14,6 +14,7 @@ import { CheckoutScreen } from "./Screens/CheckoutScreen";
 import { AuthScreen } from "./Screens/AuthScreen";
 import { ScrollUpButton } from "./Components/ScrollUpButton";
 import { toast } from "react-toastify";
+
 function App() {
   toast.configure();
   const dispatchProduct = useDispatch();
@@ -46,7 +47,7 @@ function App() {
         <Route>404 Not Found</Route>
       </Switch>
       <Footer />
-      <ScrollUpButton />
+      {/* <ScrollUpButton /> */}
     </>
   );
 }

@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 
 export const CartScreen = () => {
-  const product = useSelector((state) => state.addToCart);
+  const product = useSelector((state) => state.cart);
   const location = useLocation();
   var total = 0;
   useEffect(() => {
@@ -55,7 +55,7 @@ export const CartScreen = () => {
 
                   <tbody>
                     {product.map((item) => {
-                      total += item.price;
+                      total += item.price * item.qty;
                       return (
                         <tr key={item.id}>
                           <td className="product-col">
@@ -77,7 +77,7 @@ export const CartScreen = () => {
                               <input
                                 type="number"
                                 className="form-control"
-                                value="1"
+                                value={item.qty}
                                 min="1"
                                 max="10"
                                 step="1"
@@ -86,7 +86,7 @@ export const CartScreen = () => {
                               />
                             </div>
                           </td>
-                          <td className="total-col">{item.price}</td>
+                          <td className="total-col">{item.price * item.qty}</td>
                           <td className="remove-col">
                             <button className="btn-remove">
                               <i className="icon-close"></i>

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { addToCart, filteredProduct } from "../redux/actions/productsActions";
+import { toast } from "react-toastify";
 
 export const ProductScreen = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,17 @@ export const ProductScreen = () => {
     console.log("filter called", category);
 
     dispatch(filteredProduct(category));
+  };
+  const notify = () => {
+    toast.success("Added to cart", {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -125,7 +137,10 @@ export const ProductScreen = () => {
                             <div className="product-action">
                               <a
                                 type="button"
-                                onClick={() => addCart(item)}
+                                onClick={() => {
+                                  addCart(item);
+                                  notify();
+                                }}
                                 className="btn-product btn-cart"
                               >
                                 <span>add to cart</span>

@@ -7,41 +7,55 @@ export const Footer = () => {
       <div className="icon-boxes-container">
         <div className="container">
           <div className="row">
-            <div className="col-sm-6 col-lg-4">
+            <div className="col-sm-6 col-lg-3">
               <div className="icon-box icon-box-side">
                 <span className="icon-box-icon text-dark">
-                  <i className="icon-rocket"></i>
+                  <i className="icon-rocket" style={{ color: "red" }}></i>
                 </span>
                 <div className="icon-box-content">
-                  <h3 className="icon-box-title">Free Shipping</h3>
+                  <h3 className="icon-box-title">MINIMAL DELIVERY CHARGES</h3>
 
                   <p>orders $50 or more</p>
                 </div>
               </div>
             </div>
 
-            <div className="col-sm-6 col-lg-4">
+            <div className="col-sm-6 col-lg-3">
               <div className="icon-box icon-box-side">
                 <span className="icon-box-icon text-dark">
-                  <i className="icon-info-circle"></i>
+                  <i className="icon-info-circle" style={{ color: "red" }}></i>
                 </span>
 
                 <div className="icon-box-content">
-                  <h3 className="icon-box-title">Get 20% Off 1 Item</h3>
+                  <h3 className="icon-box-title">UNLOCK OFFER POINTS</h3>
 
                   <p>When you sign up</p>
                 </div>
               </div>
             </div>
 
-            <div className="col-sm-6 col-lg-4">
+            <div className="col-sm-6 col-lg-3">
               <div className="icon-box icon-box-side">
                 <span className="icon-box-icon text-dark">
-                  <i className="icon-life-ring"></i>
+                  <i className="icon-heart" style={{ color: "red" }}></i>
                 </span>
 
                 <div className="icon-box-content">
-                  <h3 className="icon-box-title">We Support</h3>
+                  <h3 className="icon-box-title">PREMIUM DESIGNED PRODUCTS</h3>
+
+                  <p>24/7 amazing services</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-sm-6 col-lg-3">
+              <div className="icon-box icon-box-side">
+                <span className="icon-box-icon text-dark">
+                  <i className="icon-life-ring" style={{ color: "red" }}></i>
+                </span>
+
+                <div className="icon-box-content">
+                  <h3 className="icon-box-title">WE SUPPORT</h3>
 
                   <p>24/7 amazing services</p>
                 </div>

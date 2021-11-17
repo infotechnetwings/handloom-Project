@@ -4,11 +4,11 @@ import {
   productsReducer,
   selectedProductsReducer,
   filterProductReducer,
+  removeCartReducer,
 } from "./productsReducer";
 const reducers = combineReducers({
   allProducts: productsReducer,
-  product: selectedProductsReducer,
-  addToCart: addToCartReducer,
+  cart: addToCartReducer,
   filteredProduct: filterProductReducer,
 });
 export default reducers;
