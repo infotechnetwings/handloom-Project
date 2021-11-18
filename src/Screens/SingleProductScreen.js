@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { ProductStickyBar } from "../Components/ProductStickyBar";
 import { addToCart } from "../redux/actions/productsActions";
+
 export const SingleProductScreen = () => {
   const dispatch = useDispatch();
   const item = useSelector((state) => state.allProducts.products);
+  const cartItem = useSelector((state) => state.cart);
   const location = useLocation();
   const { id } = useParams();
   const product = item.filter((item) => {
     return item.id == id;
   });
+  const isAdded = cartItem.find((x) => x.id === product[0].id);
+  console.log(isAdded);
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location]);
+  }, []);
   return (
     <>
       <main className="main">
@@ -133,10 +137,10 @@ export const SingleProductScreen = () => {
                     </div>
 
                     <div className="details-filter-row details-row-size">
-                      <label for="size">Size:</label>
+                      <label htmlFor="size">Size:</label>
                       <div className="select-custom">
                         <select name="size" id="size" className="form-control">
-                          <option value="#" selected="selected">
+                          <option value="#" defaultValue="selected">
                             Select a size
                           </option>
                           <option value="s">Small</option>
@@ -152,7 +156,7 @@ export const SingleProductScreen = () => {
                     </div>
 
                     <div className="details-filter-row details-row-size">
-                      <label for="qty">Qty:</label>
+                      <label htmlFor="qty">Qty:</label>
                       <div className="product-details-quantity">
                         <input
                           type="number"
@@ -169,14 +173,37 @@ export const SingleProductScreen = () => {
                     </div>
 
                     <div className="product-details-action">
-                      <a
+                      {isAdded ? (
+                        <Link
+                          to="/checkout"
+                          className="btn btn-outline-primary-2 btn-minwidth-md"
+                        >
+                          <span>Proceed to Checkout</span>
+                          <i className="icon-long-arrow-right"></i>
+                        </Link>
+                      ) : (
+                        <Link
+                          onClick={() => dispatch(addToCart(product[0]))}
+                          className="btn btn-outline-primary-2 btn-minwidth-md"
+                        >
+                          <span>Add To Cart</span>
+                          <i className="icon-long-arrow-right"></i>
+                        </Link>
+                      )}
+                      {/* <a
                         type="button"
                         className="btn-product btn-cart"
                         onClick={() => dispatch(addToCart(product[0]))}
                       >
                         <span>add to cart</span>
-                      </a>
-
+                      </a> */}
+                      {/* <Link
+                        href="/"
+                        className="btn btn-outline-primary-2 btn-minwidth-md"
+                      >
+                        <span>Buy Now</span>
+                        <i className="icon-long-arrow-right"></i>
+                      </Link> */}
                       <div className="details-action-wrapper">
                         <a
                           href="#"
@@ -196,38 +223,38 @@ export const SingleProductScreen = () => {
 
                       <div className="social-icons social-icons-sm">
                         <span className="social-label">Share:</span>
-                        <a
-                          href="#"
+                        <Link
+                          to="/"
                           className="social-icon"
                           title="Facebook"
                           target="_blank"
                         >
                           <i className="icon-facebook-f"></i>
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="/"
                           className="social-icon"
                           title="Twitter"
                           target="_blank"
                         >
                           <i className="icon-twitter"></i>
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="/"
                           className="social-icon"
                           title="Instagram"
                           target="_blank"
                         >
                           <i className="icon-instagram"></i>
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="/"
                           className="social-icon"
                           title="Pinterest"
                           target="_blank"
                         >
                           <i className="icon-pinterest"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -494,13 +521,13 @@ export const SingleProductScreen = () => {
           </div>
         </div>
       </main>
-      <ProductStickyBar
+      {/* <ProductStickyBar
         title={product[0].title}
         price={product[0].price}
         image={product[0].image}
         qty={product[0].qty}
         item={product[0]}
-      />
+      /> */}
     </>
   );
 };

@@ -14,6 +14,8 @@ import { CheckoutScreen } from "./Screens/CheckoutScreen";
 import { AuthScreen } from "./Screens/AuthScreen";
 import { ScrollUpButton } from "./Components/ScrollUpButton";
 import { toast } from "react-toastify";
+import { Error404 } from "./Screens/Error404";
+import { Header2 } from "./Components/Header2";
 
 function App() {
   toast.configure();
@@ -36,6 +38,7 @@ function App() {
   return (
     <>
       <Header />
+      {/* <Header2 /> */}
       <Switch>
         <Route path="/" exact component={HomeScreen} />
         <Route path="/product" component={ProductScreen} />
@@ -44,7 +47,7 @@ function App() {
         <Route path="/cart" component={CartScreen} />
         <Route path="/checkout" component={CheckoutScreen} />
         <Route path="/register" component={AuthScreen} />
-        <Route>404 Not Found</Route>
+        <Route component={Error404} />
       </Switch>
       <Footer />
       {/* <ScrollUpButton /> */}

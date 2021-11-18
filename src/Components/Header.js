@@ -93,7 +93,7 @@ export const Header = () => {
               <Link to="/" className="logo">
                 <img
                   src="assets/img/logo.png"
-                  alt="Molla Logo"
+                  alt="Logo"
                   width="105"
                   height="25"
                 />

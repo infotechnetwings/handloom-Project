@@ -37,7 +37,7 @@ export const Footer = () => {
             <div className="col-sm-6 col-lg-3">
               <div className="icon-box icon-box-side">
                 <span className="icon-box-icon text-dark">
-                  <i className="icon-heart" style={{ color: "red" }}></i>
+                  <i className="icon-heart-o" style={{ color: "red" }}></i>
                 </span>
 
                 <div className="icon-box-content">
@@ -141,7 +141,7 @@ export const Footer = () => {
                       <span className="widget-about-title">
                         Got Question? Call us 24/7
                       </span>
-                      <Link to="tel:9560988343">+91-9560988343</Link>
+                      <Link to="tel:188-125-21450">188-125-21450</Link>
                     </div>
 
                     <div className="col-sm-6 col-md-8">
@@ -168,12 +168,7 @@ export const Footer = () => {
                   <li>
                     <Link to="/">About Pilkhuwa Handloom</Link>
                   </li>
-                  <li>
-                    <Link to="/">How to shop on Pilkhuwa Handloom</Link>
-                  </li>
-                  <li>
-                    <Link to="/">FAQ</Link>
-                  </li>
+
                   <li>
                     <Link to="/">Contact us</Link>
                   </li>
