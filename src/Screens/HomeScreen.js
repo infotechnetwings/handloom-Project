@@ -15,7 +15,7 @@ export const HomeScreen = () => {
       <div className="mb-5 mb-lg-5"></div>
       <ProductCard />
       <FloatingWhatsApp
-        phoneNumber="9560988343"
+        phoneNumber="8285474429"
         accountName="Pilkhuwa Handloom"
         avatar="./assets/img/logo.png"
         allowClickAway
