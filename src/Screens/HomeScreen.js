@@ -11,7 +11,7 @@ export const HomeScreen = () => {
       <Carousel />
       <div className="mb-3 mb-lg-5"></div>
       <BannerGroup />
-      <ProductNav />
+      {/* <ProductNav /> */}
       <div className="mb-5 mb-lg-5"></div>
       <ProductCard />
       <FloatingWhatsApp
