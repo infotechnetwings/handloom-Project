@@ -4,14 +4,34 @@ import { Carousel } from "../Components/Carousel";
 import { ProductCard } from "../Components/ProductCard";
 import { ProductNav } from "../Components/ProductNav";
 import FloatingWhatsApp from "react-floating-whatsapp";
+import { Tabicon } from "../Components/Tabicon";
 
 export const HomeScreen = () => {
   return (
     <>
       <Carousel />
       <div className="mb-3 mb-lg-5"></div>
-      <BannerGroup />
+      {/* <BannerGroup /> */}
       {/* <ProductNav /> */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-around",
+        }}
+      >
+        <Tabicon image="assets/img/icons/sofa.png" title="Home Furnishing" />
+        <Tabicon
+          image="assets/img/icons/dining-room.png"
+          title="Kitchen & Dining"
+        />
+        <Tabicon image="assets/img/icons/storage.png" title="Tools & Utility" />
+        <Tabicon image="assets/img/icons/bath.png" title="Bath & Cleaning" />
+        <Tabicon
+          image="assets/img/icons/changing-table.png"
+          title="Kids Items"
+        />
+      </div>
       <div className="mb-5 mb-lg-5"></div>
       <ProductCard />
       <FloatingWhatsApp
