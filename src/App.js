@@ -37,8 +37,8 @@ function App() {
 
   return (
     <>
-      <Header />
-      {/* <Header2 /> */}
+      {/* <Header /> */}
+      <Header2 />
       <Switch>
         <Route path="/" exact component={HomeScreen} />
         <Route path="/product" component={ProductScreen} />

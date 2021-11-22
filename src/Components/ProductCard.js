@@ -41,7 +41,7 @@ export const ProductCard = () => {
               <div class="row justify-content-center">
                 {product.map((item) => {
                   return (
-                    <div class="col-6 col-md-4 col-lg-3">
+                    <div class="col-12 col-md-4 col-lg-3">
                       <div class="product product-2">
                         <figure class="product-media">
                           <a href="product.html">

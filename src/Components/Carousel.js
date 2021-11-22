@@ -26,7 +26,6 @@ export const Carousel = () => {
 
           <div
             style={{
-              zIndex: "2000",
               position: "absolute",
               top: "70%",
               left: "5%",

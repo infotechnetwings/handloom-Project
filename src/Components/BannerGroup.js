@@ -3,107 +3,107 @@ import { Link } from "react-router-dom";
 
 export const BannerGroup = () => {
   return (
-    <div className="banner-group">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12 col-lg-5">
-            <div
-              className="
-                  banner banner-large banner-overlay banner-overlay-light
-                "
-            >
-              <Link to="/">
+    <>
+      <div class="container categories pt-6">
+        <h2 class="title-lg text-center mb-4">New Arriable</h2>
+
+        <div class="row">
+          <div class="col-6 col-lg-4">
+            <div class="banner banner-display banner-link-anim">
+              <a href="#">
                 <img
-                  src="assets/images/demos/demo-2/banners/banner-1.jpg"
+                  src="assets/images/banners/home/banner-1.jpg"
                   alt="Banner"
                 />
-              </Link>
+              </a>
 
-              <div className="banner-content banner-content-top">
-                <h4 className="banner-subtitle">Clearence</h4>
-
-                <h3 className="banner-title">Home & Furnishing</h3>
-
-                <div className="banner-text">---</div>
-
-                <Link to="/" className="btn btn-outline-gray banner-link">
-                  Shop Now<i className="icon-long-arrow-right"></i>
+              <div class="banner-content banner-content-center">
+                <h3 class="banner-title text-white">
+                  <a href="#">Outdoor</a>
+                </h3>
+                <Link
+                  class="btn btn-outline-white"
+                  style={{ textDecoration: "none", marginTop: 10 }}
+                >
+                  Shop Now<i class="icon-long-arrow-right"></i>
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="col-md-6 col-lg-3">
-            <div className="banner banner-overlay">
-              <Link to="/">
+          <div class="col-6 col-lg-4 order-lg-last">
+            <div class="banner banner-display banner-link-anim">
+              <a href="#">
                 <img
-                  src="assets/images/demos/demo-2/banners/banner-2.jpg"
+                  src="assets/images/banners/home/banner-4.jpg"
                   alt="Banner"
                 />
-              </Link>
+              </a>
 
-              <div className="banner-content banner-content-bottom">
-                <h4 className="banner-subtitle text-grey">On Sale</h4>
-
-                <h3 className="banner-title text-white">
-                  Bathing <br />& Cleaning
+              <div class="banner-content banner-content-center">
+                <h3 class="banner-title text-white">
+                  <a href="#">Lighting</a>
                 </h3>
 
-                <div className="banner-text text-white">--------</div>
-
-                <Link to="/" className="btn btn-outline-white banner-link">
-                  Discover Now<i className="icon-long-arrow-right"></i>
+                <Link
+                  class="btn btn-outline-white"
+                  style={{ textDecoration: "none", marginTop: 10 }}
+                >
+                  Shop Now<i class="icon-long-arrow-right"></i>
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="col-md-6 col-lg-4">
-            <div className="banner banner-overlay">
-              <Link to="/">
-                <img
-                  src="assets/images/demos/demo-2/banners/banner-3.jpg"
-                  alt="Banner"
-                />
-              </Link>
+          <div class="col-sm-12 col-lg-4 banners-sm">
+            <div class="row">
+              <div class="banner banner-display banner-link-anim col-lg-12 col-6">
+                <a href="#">
+                  <img
+                    src="assets/images/banners/home/banner-2.jpg"
+                    alt="Banner"
+                  />
+                </a>
 
-              <div className="banner-content banner-content-top">
-                <h4 className="banner-subtitle text-grey">New Arrivals</h4>
+                <div class="banner-content banner-content-center">
+                  <h3 class="banner-title text-white">
+                    <a href="#">Furniture and Design</a>
+                  </h3>
 
-                <h3 className="banner-title text-white">
-                  Handloom <br />
-                  Product
-                </h3>
-
-                <Link to="/" className="btn btn-outline-white banner-link">
-                  Discover Now<i className="icon-long-arrow-right"></i>
-                </Link>
+                  <Link
+                    class="btn btn-outline-white"
+                    style={{ textDecoration: "none", marginTop: 10 }}
+                  >
+                    Shop Now<i class="icon-long-arrow-right"></i>
+                  </Link>
+                </div>
               </div>
-            </div>
 
-            <div className="banner banner-overlay banner-overlay-light">
-              <Link to="/">
-                <img
-                  src="assets/images/demos/demo-2/banners/banner-4.jpg"
-                  alt="Banner"
-                />
-              </Link>
+              <div class="banner banner-display banner-link-anim col-lg-12 col-6">
+                <a href="#">
+                  <img
+                    src="assets/images/banners/home/banner-3.jpg"
+                    alt="Banner"
+                  />
+                </a>
 
-              <div className="banner-content banner-content-top">
-                <h4 className="banner-subtitle">On Sale</h4>
+                <div class="banner-content banner-content-center">
+                  <h3 class="banner-title text-white">
+                    <a href="#">Kitchen & Utensil</a>
+                  </h3>
 
-                <h3 className="banner-title">Tools & utility</h3>
-
-                <div className="banner-text">------</div>
-
-                <Link to="/" className="btn btn-outline-gray banner-link">
-                  Shop Now<i className="icon-long-arrow-right"></i>
-                </Link>
+                  <Link
+                    class="btn btn-outline-white"
+                    style={{ textDecoration: "none", marginTop: 10 }}
+                  >
+                    Shop Now<i class="icon-long-arrow-right"></i>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
