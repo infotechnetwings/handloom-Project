@@ -71,7 +71,10 @@ export const ProductCard = () => {
 
                           <div class="product-action product-action-transparent">
                             <Link
-                              onClick={() => addCart(item)}
+                              onClick={() => {
+                                addCart(item);
+                                notify();
+                              }}
                               class="btn-product btn-cart"
                             >
                               <span>Add to cart</span>

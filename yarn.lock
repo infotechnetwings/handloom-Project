@@ -9126,6 +9126,13 @@ react-floating-whatsapp@^4.0.5:
   resolved "https://registry.yarnpkg.com/react-floating-whatsapp/-/react-floating-whatsapp-4.0.5.tgz#11020f6387298a4e18268c99baddbc83302a9d3e"
   integrity sha512-KgpzswJ/Z5pKPDeqQDcMDHBgPQonqS6GLCb44HSSUaH4kgYBnigllWjfAC/D7oGvAGglKYpNOWM312Bp1xlC4Q==
 
+react-grid-system@^7.3.2:
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/react-grid-system/-/react-grid-system-7.3.2.tgz#b3e8cc704d432b097bd03c6ea8c2bbed05974475"
+  integrity sha512-SR5FKJvvN+Sl/OqSpyhLaesfc2cHKxFlP5xL53jUp3m+vF40OYiJbCuW+U43YeNEZQUfR38K3Ec+dVxl9y6MUg==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"

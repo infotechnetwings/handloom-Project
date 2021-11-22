@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from "react-grid-system";
 
 export const Tabicon = ({ image, title }) => {
   return (
-    <div
+    <Col
       style={{
         display: "flex",
         alignItems: "center",
@@ -34,6 +35,6 @@ export const Tabicon = ({ image, title }) => {
       <div class="content">
         <p class="text-center">{title}</p>
       </div>
-    </div>
+    </Col>
   );
 };
