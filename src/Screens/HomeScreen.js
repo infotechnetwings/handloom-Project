@@ -11,7 +11,7 @@ export const HomeScreen = () => {
     <>
       <Carousel />
       <div className="mb-3 mb-lg-5"></div>
-      {/* <BannerGroup /> */}
+
       {/* <ProductNav /> */}
       <div
         style={{
@@ -32,6 +32,8 @@ export const HomeScreen = () => {
           title="Kids Items"
         />
       </div>
+      <div className="mb-5 mb-lg-5"></div>
+      <BannerGroup />
       <div className="mb-5 mb-lg-5"></div>
       <ProductCard />
       <FloatingWhatsApp
