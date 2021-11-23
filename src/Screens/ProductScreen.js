@@ -135,7 +135,7 @@ export const ProductScreen = () => {
                             </div>
 
                             <div className="product-action">
-                              <a
+                              <Link
                                 type="button"
                                 onClick={() => {
                                   addCart(item);
@@ -144,7 +144,7 @@ export const ProductScreen = () => {
                                 className="btn-product btn-cart"
                               >
                                 <span>add to cart</span>
-                              </a>
+                              </Link>
                             </div>
                           </figure>
 

@@ -1,10 +1,23 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 export const AuthScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  const handleSubmit = () => {};
+  const [user, setUser] = useState({});
+  const handleSubmit = () => {
+    const url = "";
+    axios
+      .post(url, { username, password })
+      .then((res) => {
+        if (res.data.success) {
+          console.log("successfully login", res.data.user);
+          setUser(res.data.user);
+        } else console.log("login Failed ");
+      })
+      .catch((err) => console.log(err, "error in sending post request"));
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name == "phone") {

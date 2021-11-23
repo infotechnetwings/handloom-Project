@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { ProductStickyBar } from "../Components/ProductStickyBar";
 import { addToCart } from "../redux/actions/productsActions";
+import { toast } from "react-toastify";
 
 export const SingleProductScreen = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,17 @@ export const SingleProductScreen = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const notify = () => {
+    toast.success("Added to cart", {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   return (
     <>
       <main className="main">
@@ -183,7 +195,10 @@ export const SingleProductScreen = () => {
                         </Link>
                       ) : (
                         <Link
-                          onClick={() => dispatch(addToCart(product[0]))}
+                          onClick={() => {
+                            dispatch(addToCart(product[0]));
+                            notify();
+                          }}
                           className="btn btn-outline-primary-2 btn-minwidth-md"
                         >
                           <span>Add To Cart</span>

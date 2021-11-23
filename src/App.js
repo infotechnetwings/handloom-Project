@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import BottomNavigation from "reactjs-bottom-navigation";
 import { Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Header } from "./Components/Header";
@@ -16,6 +17,7 @@ import { ScrollUpButton } from "./Components/ScrollUpButton";
 import { toast } from "react-toastify";
 import { Error404 } from "./Screens/Error404";
 import { Header2 } from "./Components/Header2";
+require("dotenv").config();
 
 function App() {
   toast.configure();
@@ -34,7 +36,25 @@ function App() {
   useEffect(() => {
     fetchProudct();
   }, []);
+  const bottomNavItems = [
+    {
+      title: "Home",
+    },
 
+    {
+      title: "Search",
+    },
+
+    {
+      title: "Notifications",
+    },
+
+    {
+      title: "Menu",
+
+      onClick: () => alert("menu clicked"),
+    },
+  ];
   return (
     <>
       <Header />
@@ -51,6 +71,11 @@ function App() {
       </Switch>
       <Footer />
       {/* <ScrollUpButton /> */}
+      {/* <BottomNavigation
+        items={bottomNavItems}
+        defaultSelected={0}
+        onItemClick={(item) => console.log(item)}
+      /> */}
     </>
   );
 }

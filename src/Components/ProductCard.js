@@ -41,10 +41,10 @@ export const ProductCard = () => {
               <div class="row justify-content-center">
                 {product.map((item) => {
                   return (
-                    <div class="col-12 col-md-4 col-lg-3">
+                    <div class="col-6 col-md-4 col-lg-3">
                       <div class="product product-2">
                         <figure class="product-media">
-                          <a href="product.html">
+                          <Link to={`productdetail/${item.id}`}>
                             <img
                               src={item.image}
                               alt="Product image"
@@ -57,7 +57,7 @@ export const ProductCard = () => {
                               class="product-image-hover"
                               style={{ height: 250 }}
                             />
-                          </a>
+                          </Link>
 
                           <div class="product-action-vertical">
                             <a
