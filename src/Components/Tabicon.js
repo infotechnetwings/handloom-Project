@@ -12,6 +12,7 @@ export const Tabicon = ({ image, title }) => {
       }}
     >
       <Link
+        to="/"
         style={{
           borderColor: "#FF4757",
           borderRadius: 10,
@@ -32,8 +33,8 @@ export const Tabicon = ({ image, title }) => {
           }}
         />
       </Link>
-      <div class="content">
-        <p class="text-center">{title}</p>
+      <div className="content">
+        <p className="text-center">{title}</p>
       </div>
     </Col>
   );

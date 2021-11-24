@@ -1131,6 +1131,9 @@ blockquote.text-white cite span {
   font-size: 1.3rem;
   padding: 0.1rem 0.3rem;
 }
+.whatsapp_icon {
+  z-index: 100000;
+}
 .header-search .btn {
   flex: 0 0 40px;
   max-width: 40px;
@@ -1568,13 +1571,13 @@ blockquote.text-white cite span {
   .header-search-visible .search-toggle {
     display: block;
   }
-  .banner-image1{
+  .banner-image1 {
     background-image: url("../img/slider/banner1.png");
   }
-  .banner-image2{
+  .banner-image2 {
     background-image: url("../img/slider/banner2.png");
   }
-  .banner-image3{
+  .banner-image3 {
     background-image: url("../img/slider/banner3.png");
   }
   .header-search-visible .header-search-wrapper {

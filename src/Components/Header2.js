@@ -80,213 +80,229 @@ export const Header2 = () => {
     });
   };
   return (
-    <header class="header">
-      <div class="header-middle sticky-header">
-        <div class="container">
-          <div class="header-left">
-            <button class="mobile-menu-toggler">
-              <span class="sr-only">Toggle mobile menu</span>
-              <i class="icon-bars"></i>
-            </button>
+    <>
+      <header className="header">
+        <div className="header-middle sticky-header">
+          <div className="container">
+            <div className="header-left">
+              <button className="mobile-menu-toggler">
+                <span className="sr-only">Toggle mobile menu</span>
+                <i className="icon-bars"></i>
+              </button>
 
-            <Link to="/" class="logo">
-              <img
-                src="assets/img/logo.png"
-                alt="Molla Logo"
-                width="105"
-                height="25"
-              />
-            </Link>
+              <Link to="/" className="logo">
+                <img
+                  src="assets/img/logo.png"
+                  alt="Molla Logo"
+                  width="105"
+                  height="25"
+                />
+              </Link>
 
-            <nav class="main-nav">
-              <ul class="menu sf-arrows">
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
+              <nav className="main-nav">
+                <ul className="menu sf-arrows">
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
 
-                <li>
-                  <Link to="/product">Product</Link>
-                </li>
-                <li>
-                  <Link to="/product">Offers</Link>
-                </li>
-                <li>
-                  <Link to="/product">Blogs</Link>
-                </li>
-                <li>
-                  <Link to="/product">About Us</Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
-          <div class="header-right">
-            <div class="header-search">
-              <a href="#" class="search-toggle" role="button" title="Search">
-                <i class="icon-search"></i>
-              </a>
-              <form action="#" method="get">
-                <div class="header-search-wrapper">
-                  <label for="q" class="sr-only">
-                    Search
-                  </label>
-                  <input
-                    type="search"
-                    class="form-control"
-                    name="q"
-                    id="q"
-                    placeholder="Search in..."
-                    required
-                  />
-                </div>
-              </form>
+                  <li>
+                    <Link to="/product">Product</Link>
+                  </li>
+                  <li>
+                    <Link to="/product">Offers</Link>
+                  </li>
+                  <li>
+                    <Link to="/product">Blogs</Link>
+                  </li>
+                  <li>
+                    <Link to="/product">About Us</Link>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
-            <div class="dropdown cart-dropdown">
-              <a
-                href="#"
-                class="dropdown-toggle"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                data-display="static"
-              >
-                <i class="icon-heart-o"></i>
-                <span class="cart-count">1</span>
-              </a>
+            <div className="header-right">
+              <div className="header-search">
+                <a
+                  href="#"
+                  className="search-toggle"
+                  role="button"
+                  title="Search"
+                >
+                  <i className="icon-search"></i>
+                </a>
+                <form action="#" method="get">
+                  <div className="header-search-wrapper">
+                    <label htmlFor="q" className="sr-only">
+                      Search
+                    </label>
+                    <input
+                      type="search"
+                      className="form-control"
+                      name="q"
+                      id="q"
+                      placeholder="Search in..."
+                      required
+                    />
+                  </div>
+                </form>
+              </div>
 
-              <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-cart-products">
-                  <div class="product">
-                    <div class="product-cart-details">
-                      <h4 class="product-title">
-                        <a href="product.html">
-                          Blue utility pinafore denim dress
+              <div className="dropdown cart-dropdown">
+                <a
+                  href="#"
+                  className="dropdown-toggle"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-display="static"
+                >
+                  <i className="icon-heart-o"></i>
+                  <span className="cart-count">1</span>
+                </a>
+
+                <div className="dropdown-menu dropdown-menu-right">
+                  <div className="dropdown-cart-products">
+                    <div className="product">
+                      <div className="product-cart-details">
+                        <h4 className="product-title">
+                          <a href="product.html">
+                            Blue utility pinafore denim dress
+                          </a>
+                        </h4>
+
+                        <span className="cart-product-info">
+                          <span className="cart-product-qty">1</span>x 76.00
+                        </span>
+                      </div>
+
+                      <figure className="product-image-container">
+                        <a href="product.html" className="product-image">
+                          <img
+                            src="assets/images/products/cart/product-2.jpg"
+                            alt="product"
+                          />
                         </a>
-                      </h4>
-
-                      <span class="cart-product-info">
-                        <span class="cart-product-qty">1</span>x 76.00
-                      </span>
-                    </div>
-
-                    <figure class="product-image-container">
-                      <a href="product.html" class="product-image">
-                        <img
-                          src="assets/images/products/cart/product-2.jpg"
-                          alt="product"
-                        />
+                      </figure>
+                      <a href="#" className="btn-remove" title="Remove Product">
+                        <i className="icon-close"></i>
                       </a>
-                    </figure>
-                    <a href="#" class="btn-remove" title="Remove Product">
-                      <i class="icon-close"></i>
+                    </div>
+                  </div>
+
+                  <div className="dropdown-cart-total">
+                    <span>Total</span>
+
+                    <span className="cart-total-price">160.00</span>
+                  </div>
+
+                  <div className="dropdown-cart-action">
+                    <a href="cart.html" className="btn btn-primary">
+                      View Cart
+                    </a>
+                    <a
+                      href="checkout.html"
+                      className="btn btn-outline-primary-2"
+                    >
+                      <span>Checkout</span>
+                      <i className="icon-long-arrow-right"></i>
                     </a>
                   </div>
                 </div>
-
-                <div class="dropdown-cart-total">
-                  <span>Total</span>
-
-                  <span class="cart-total-price">160.00</span>
-                </div>
-
-                <div class="dropdown-cart-action">
-                  <a href="cart.html" class="btn btn-primary">
-                    View Cart
-                  </a>
-                  <a href="checkout.html" class="btn btn-outline-primary-2">
-                    <span>Checkout</span>
-                    <i class="icon-long-arrow-right"></i>
-                  </a>
-                </div>
               </div>
-            </div>
 
-            <div class="dropdown cart-dropdown">
-              <a
-                href="#"
-                class="dropdown-toggle"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                data-display="static"
-              >
-                <i class="icon-shopping-cart"></i>
-                <span class="cart-count">{product.length}</span>
-              </a>
+              <div className="dropdown cart-dropdown">
+                <a
+                  href="#"
+                  className="dropdown-toggle"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-display="static"
+                >
+                  <i className="icon-shopping-cart"></i>
+                  <span className="cart-count">{product.length}</span>
+                </a>
 
-              <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-cart-products">
-                  {product.map((item) => {
-                    total += item.price * item.qty;
-                    return (
-                      <div class="product" key={item.id}>
-                        <div class="product-cart-details">
-                          <h4 class="product-title">
-                            <a href="product.html">{item.title}</a>
-                          </h4>
+                <div className="dropdown-menu dropdown-menu-right">
+                  <div className="dropdown-cart-products">
+                    {product.map((item) => {
+                      total += item.price * item.qty;
+                      return (
+                        <div className="product" key={item.id}>
+                          <div className="product-cart-details">
+                            <h4 className="product-title">
+                              <a href="product.html">{item.title}</a>
+                            </h4>
 
-                          <span class="cart-product-info">
-                            <span class="cart-product-qty"> {item.qty}</span>x ₹{" "}
-                            {item.price}
-                          </span>
-                        </div>
+                            <span className="cart-product-info">
+                              <span className="cart-product-qty">
+                                {" "}
+                                {item.qty}
+                              </span>
+                              x ₹ {item.price}
+                            </span>
+                          </div>
 
-                        <figure className="product-image-container">
-                          <Link to="product.html" className="product-image">
-                            <img src={item.image} alt="product" />
+                          <figure className="product-image-container">
+                            <Link to="product.html" className="product-image">
+                              <img src={item.image} alt="product" />
+                            </Link>
+                          </figure>
+                          <Link
+                            onClick={() => {
+                              dispatch(removeCart(item));
+                              notify();
+                            }}
+                            className="btn-remove"
+                            title="Remove Product"
+                          >
+                            <i className="icon-close"></i>
                           </Link>
-                        </figure>
-                        <Link
-                          onClick={() => {
-                            dispatch(removeCart(item));
-                            notify();
-                          }}
-                          className="btn-remove"
-                          title="Remove Product"
-                        >
-                          <i className="icon-close"></i>
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </div>
+                        </div>
+                      );
+                    })}
+                  </div>
 
-                <div class="dropdown-cart-total">
-                  <span className="cart-total-price">₹ {total.toFixed(2)}</span>
-                </div>
+                  <div className="dropdown-cart-total">
+                    <span className="cart-total-price">
+                      ₹ {total.toFixed(2)}
+                    </span>
+                  </div>
 
-                <div class="dropdown-cart-action">
-                  <Link to="/cart" className="btn btn-primary">
-                    View Cart
-                  </Link>
-                  <Link to="/checkout" className="btn btn-outline-primary-2">
-                    <span>Checkout</span>
-                    <i className="icon-long-arrow-right"></i>
-                  </Link>
+                  <div className="dropdown-cart-action">
+                    <Link to="/cart" className="btn btn-primary">
+                      View Cart
+                    </Link>
+                    <Link to="/checkout" className="btn btn-outline-primary-2">
+                      <span>Checkout</span>
+                      <i className="icon-long-arrow-right"></i>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              style={{
-                paddingBottom: 10,
-                paddingTop: 10,
-                paddingLeft: 25,
-                paddingRight: 25,
-                backgroundColor: "#cc6666",
-                marginLeft: 15,
-              }}
-            >
-              <Link to="/register" data-toggle="modal">
-                <i class="icon-user" style={{ color: "#fff" }}></i>
-                <span style={{ color: "#fff" }}>Login</span>
-              </Link>
+              <div
+                style={{
+                  paddingBottom: 10,
+                  paddingTop: 10,
+                  paddingLeft: 25,
+                  paddingRight: 25,
+                  backgroundColor: "#cc6666",
+                  marginLeft: 15,
+                }}
+              >
+                <Link to="/register" data-toggle="modal">
+                  <i className="icon-user" style={{ color: "#fff" }}></i>
+                  <span style={{ color: "#fff" }}>Login</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+      <MobileHeader />
+    </>
   );
 };

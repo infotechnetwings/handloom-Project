@@ -5,10 +5,11 @@ import axios from "axios";
 
 export const MobileHeader = () => {
   const [category, setState] = useState([]);
-  // const category = useSelector((state) => state.allProducts.products);
   useEffect(() => {
-    const url = "https://fakestoreapi.com/products/categories";
-    axios.get(url).then((res) => setState(res.data));
+    const url = "https://www.admin.pilkhuwahandloom.com/api/category";
+    axios.get(url).then((res) => {
+      setState(res.data);
+    });
     console.log(category, "hjhkhkh");
   }, []);
   return (
@@ -95,11 +96,11 @@ export const MobileHeader = () => {
             >
               <nav className="mobile-cats-nav">
                 <ul className="mobile-cats-menu">
-                  {category.map((item, id) => {
+                  {category.map((item) => {
                     return (
-                      <li key={id}>
+                      <li key={item.id}>
                         <Link className="mobile-cats-lead" to="/">
-                          {item}
+                          {item.name}
                         </Link>
                       </li>
                     );
