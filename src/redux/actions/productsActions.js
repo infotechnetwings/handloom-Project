@@ -25,9 +25,23 @@ export const addToCart = (product) => {
   };
 };
 
+export const addToWishlist = (product) => {
+  return {
+    type: ActionTypes.ADD_TO_WISHLIST,
+    payload: product,
+  };
+};
+
 export const removeCart = (product) => {
   return {
     type: ActionTypes.REMOVE_CART,
+    payload: product,
+  };
+};
+
+export const removeWishlist = (product) => {
+  return {
+    type: ActionTypes.REMOVE_WISHLIST,
     payload: product,
   };
 };

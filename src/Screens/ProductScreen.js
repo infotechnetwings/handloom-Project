@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { addToCart, filteredProduct } from "../redux/actions/productsActions";
+import {
+  addToCart,
+  addToWishlist,
+  filteredProduct,
+} from "../redux/actions/productsActions";
 import { toast } from "react-toastify";
 
 export const ProductScreen = () => {
@@ -110,28 +114,14 @@ export const ProductScreen = () => {
                             </Link>
 
                             <div className="product-action-vertical">
-                              <a
-                                href="#"
+                              <Link
+                                onClick={() => dispatch(addToWishlist(item))}
                                 className="
                                 btn-product-icon btn-wishlist btn-expandable
                               "
                               >
-                                <span>add to wishlist</span>
-                              </a>
-                              <a
-                                href="popup/quickView.html"
-                                className="btn-product-icon btn-quickview"
-                                title="Quick view"
-                              >
-                                <span>Quick view</span>
-                              </a>
-                              <a
-                                href="#"
-                                className="btn-product-icon btn-compare"
-                                title="Compare"
-                              >
-                                <span>Compare</span>
-                              </a>
+                                <span>Add to wishlist</span>
+                              </Link>
                             </div>
 
                             <div className="product-action">

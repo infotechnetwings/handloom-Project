@@ -153,16 +153,44 @@ export const AuthScreen = () => {
                         id="register-email-2"
                         name="register-email"
                         required
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="form-group">
-                      <label for="register-password-2">Password *</label>
+                      <label for="register-email-2">
+                        Enter your username *
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="register-username-2"
+                        name="register-username"
+                        required
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label for="register-email-2">Password *</label>
                       <input
                         type="password"
                         className="form-control"
                         id="register-password-2"
                         name="register-password"
                         required
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label for="register-password-2">
+                        Confirm Password *
+                      </label>
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="register-password-confirm-2"
+                        name="register-password-confirm"
+                        required
+                        onChange={handleChange}
                       />
                     </div>
 

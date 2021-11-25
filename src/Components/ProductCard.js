@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart } from "../redux/actions/productsActions";
+import { addToCart, addToWishlist } from "../redux/actions/productsActions";
 import { toast } from "react-toastify";
 
 export const ProductCard = () => {
@@ -60,13 +60,13 @@ export const ProductCard = () => {
                           </Link>
 
                           <div className="product-action-vertical">
-                            <a
-                              href="#"
+                            <Link
+                              onClick={() => dispatch(addToWishlist(item))}
                               className="btn-product-icon btn-wishlist"
                               title="Add to wishlist"
                             >
                               <span>add to wishlist</span>
-                            </a>
+                            </Link>
                           </div>
 
                           <div className="product-action product-action-transparent">

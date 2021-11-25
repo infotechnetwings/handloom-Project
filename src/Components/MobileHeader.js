@@ -84,6 +84,31 @@ export const MobileHeader = () => {
                       Product
                     </Link>
                   </li>
+                  <li>
+                    <Link to="/product" className="sf-with-ul">
+                      Home Furnishing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/product" className="sf-with-ul">
+                      Kitchen & Dinning
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/product" className="sf-with-ul">
+                      Tools & Utility
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/product" className="sf-with-ul">
+                      Bath & Cleaning
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/product" className="sf-with-ul">
+                      Kids & Items
+                    </Link>
+                  </li>
                 </ul>
               </nav>
             </div>

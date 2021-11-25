@@ -17,6 +17,7 @@ import { ScrollUpButton } from "./Components/ScrollUpButton";
 import { toast } from "react-toastify";
 import { Error404 } from "./Screens/Error404";
 import { Header2 } from "./Components/Header2";
+import { WishlistScreen } from "./Screens/WishlistScreen";
 require("dotenv").config();
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
         <Route path="/cart" component={CartScreen} />
         <Route path="/checkout" component={CheckoutScreen} />
         <Route path="/register" component={AuthScreen} />
+        <Route path="/wishlist" component={WishlistScreen} />
         <Route component={Error404} />
       </Switch>
       <Footer />

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeCart } from "../redux/actions/productsActions";
+import { removeCart, removeWishlist } from "../redux/actions/productsActions";
 import { MobileHeader } from "./MobileHeader";
 import { toast } from "react-toastify";
 
 export const Header2 = () => {
   const product = useSelector((state) => state.cart);
+  const wishlist_product = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
   const [searchProduct, setSearchProduct] = useState([
     {
@@ -53,6 +54,7 @@ export const Header2 = () => {
     },
   ]);
   var total = 0;
+  var wishlist_total = 0;
   const notify = () => {
     toast.error("item removed from cart", {
       position: "bottom-left",
@@ -159,55 +161,58 @@ export const Header2 = () => {
                   data-display="static"
                 >
                   <i className="icon-heart-o"></i>
-                  <span className="cart-count">1</span>
+                  <span className="cart-count">{wishlist_product.length}</span>
                 </a>
 
                 <div className="dropdown-menu dropdown-menu-right">
                   <div className="dropdown-cart-products">
-                    <div className="product">
-                      <div className="product-cart-details">
-                        <h4 className="product-title">
-                          <a href="product.html">
-                            Blue utility pinafore denim dress
-                          </a>
-                        </h4>
+                    {wishlist_product.map((item) => {
+                      wishlist_total += item.price * item.qty;
+                      return (
+                        <div className="product">
+                          <div className="product-cart-details">
+                            <h4 className="product-title">
+                              <a href="product.html">{item.title}</a>
+                            </h4>
 
-                        <span className="cart-product-info">
-                          <span className="cart-product-qty">1</span>x 76.00
-                        </span>
-                      </div>
+                            <span className="cart-product-info">
+                              <span className="cart-product-qty">
+                                {item.qty}
+                              </span>
+                              x {item.price}
+                            </span>
+                          </div>
 
-                      <figure className="product-image-container">
-                        <a href="product.html" className="product-image">
-                          <img
-                            src="assets/images/products/cart/product-2.jpg"
-                            alt="product"
-                          />
-                        </a>
-                      </figure>
-                      <a href="#" className="btn-remove" title="Remove Product">
-                        <i className="icon-close"></i>
-                      </a>
-                    </div>
+                          <figure className="product-image-container">
+                            <a href="product.html" className="product-image">
+                              <img src={item.image} alt="product" />
+                            </a>
+                          </figure>
+                          <Link
+                            onClick={() => dispatch(removeWishlist(item))}
+                            className="btn-remove"
+                            title="Remove Product"
+                          >
+                            <i className="icon-close"></i>
+                          </Link>
+                        </div>
+                      );
+                    })}
                   </div>
 
                   <div className="dropdown-cart-total">
                     <span>Total</span>
 
-                    <span className="cart-total-price">160.00</span>
+                    <span className="cart-total-price">
+                      ₹ {wishlist_total.toFixed(2)}
+                    </span>
                   </div>
 
                   <div className="dropdown-cart-action">
-                    <a href="cart.html" className="btn btn-primary">
-                      View Cart
-                    </a>
-                    <a
-                      href="checkout.html"
-                      className="btn btn-outline-primary-2"
-                    >
-                      <span>Checkout</span>
+                    <Link to="/wishlist" className="btn btn-outline-primary-2">
+                      <span>View Wishlist</span>
                       <i className="icon-long-arrow-right"></i>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -267,6 +272,8 @@ export const Header2 = () => {
                   </div>
 
                   <div className="dropdown-cart-total">
+                    <span>Total</span>
+
                     <span className="cart-total-price">
                       ₹ {total.toFixed(2)}
                     </span>
@@ -284,11 +291,13 @@ export const Header2 = () => {
                 </div>
               </div>
               <div
+                className="d-none d-lg-block"
                 style={{
-                  paddingBottom: 10,
-                  paddingTop: 10,
-                  paddingLeft: 25,
-                  paddingRight: 25,
+                  // display: "none",
+                  paddingBottom: 8,
+                  paddingTop: 8,
+                  paddingLeft: 20,
+                  paddingRight: 20,
                   backgroundColor: "#cc6666",
                   marginLeft: 15,
                 }}
