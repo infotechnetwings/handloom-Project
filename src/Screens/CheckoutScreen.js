@@ -7,6 +7,7 @@ export const CheckoutScreen = () => {
   const [isChecked, setIsChecked] = useState(false);
   const product = useSelector((state) => state.cart);
   const location = useLocation();
+  const [loading, setloading] = useState(false);
   const [checkoutDetail, setCheckoutDetail] = useState({
     firstName: "",
     lastName: "",
@@ -81,8 +82,9 @@ export const CheckoutScreen = () => {
       document.body.appendChild(script);
     });
   }
-  async function displayRazorpay(e) {
+  async function displayRazorpay() {
     console.log("click");
+    setloading(true);
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -92,9 +94,13 @@ export const CheckoutScreen = () => {
       return;
     }
 
-    const data = await fetch("http://localhost:1337/razorpay", {
-      method: "POST",
-    }).then((t) => t.json());
+    const data = await fetch(
+      "https://www.admin.pilkhuwahandloom.com/api/razorpay",
+      {
+        method: "POST",
+        data: { checkoutDetail, product, total },
+      }
+    ).then((t) => t.json());
 
     console.log(data);
 
@@ -105,7 +111,7 @@ export const CheckoutScreen = () => {
       order_id: data.id,
       name: "Pilakhuwa Handloom",
       description: "Thank you for buying",
-      image: "http://localhost:1337/logo.svg",
+      image: "https://www.admin.pilkhuwahandloom.com/api/logo.png",
       handler: function (response) {
         alert(response.razorpay_payment_id);
         alert(response.razorpay_order_id);
@@ -122,10 +128,11 @@ export const CheckoutScreen = () => {
   }
   return (
     <main className="main">
+      {loading ? <div>Processing your payment</div> : <div>deepka</div>}
       <div className="page-header text-center">
         <div className="container">
           <h1 className="page-title">
-            Checkout<span>Shop</span>
+            Checkout<span>Pilakhuwa Handloom</span>
           </h1>
         </div>
       </div>
@@ -147,7 +154,7 @@ export const CheckoutScreen = () => {
       <div className="page-content">
         <div className="checkout">
           <div className="container">
-            <form onSubmit={() => displayRazorpay()}>
+            <form>
               <div className="row">
                 <div className="col-lg-9">
                   <h2 className="checkout-title">Billing Details</h2>
@@ -291,7 +298,7 @@ export const CheckoutScreen = () => {
                         {product.map((item) => {
                           total += item.price;
                           return (
-                            <tr>
+                            <tr key={item.id}>
                               <td>
                                 <a href="#">{item.title}</a>
                               </td>
@@ -339,11 +346,7 @@ export const CheckoutScreen = () => {
                           aria-labelledby="heading-3"
                           data-parent="#accordion-payment"
                         >
-                          <div className="card-body">
-                            Quisque volutpat mattis eros. Lorem ipsum dolor sit
-                            amet, consectetuer adipiscing elit. Donec odio.
-                            Quisque volutpat mattis eros.
-                          </div>
+                          <div className="card-body">Cash on delivery</div>
                         </div>
                       </div>
 
@@ -374,24 +377,21 @@ export const CheckoutScreen = () => {
                           data-parent="#accordion-payment"
                         >
                           <div className="card-body">
-                            Donec nec justo eget felis facilisis fermentum.Lorem
-                            ipsum dolor sit amet, consectetuer adipiscing elit.
-                            Donec odio. Quisque volutpat mattis eros. Lorem
-                            ipsum dolor sit ame.
+                            Complete a payment through razarpay secure server
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <button
-                      type="submit"
+                    <Link
+                      onClick={() => displayRazorpay()}
                       className="btn btn-outline-primary-2 btn-order btn-block"
                     >
                       <span className="btn-text">Place Order</span>
                       <span className="btn-hover-text">
                         Proceed to Checkout
                       </span>
-                    </button>
+                    </Link>
                   </div>
                 </aside>
               </div>

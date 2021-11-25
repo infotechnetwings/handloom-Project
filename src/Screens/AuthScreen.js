@@ -1,30 +1,65 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const AuthScreen = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
   const [user, setUser] = useState({});
-  const handleSubmit = () => {
-    const url = "";
-    axios
-      .post(url, { username, password })
-      .then((res) => {
-        if (res.data.success) {
-          console.log("successfully login", res.data.user);
-          setUser(res.data.user);
-        } else console.log("login Failed ");
-      })
-      .catch((err) => console.log(err, "error in sending post request"));
+  const [loginDetails, setloginDetails] = useState({
+    email: "",
+    password: "",
+  });
+  const [registerDetails, setregisterDetails] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+  });
+  const handleLogin = () => {};
+  const handleRegistration = () => {
+    const url = "https://www.admin.pilkhuwahandloom.com/api/register";
+    if (registerDetails.password === registerDetails.confirm_password) {
+      const formdata = new FormData();
+      formdata.append("email", registerDetails.email);
+      formdata.append("password", registerDetails.password);
+      formdata.append("name", registerDetails.username);
+      axios
+        .post(url, formdata)
+        .then((res) => {
+          if (res.data === "Already Registered") {
+            console.log("Already Registered !");
+          } else {
+            console.log("Registered Sucessfully", res.data);
+            setUser(res.data);
+          }
+        })
+        .catch((err) => console.log(err, "error in sending post request"));
+    }
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name == "phone") {
-      setPhone(value);
-      console.log(phone);
+    switch (name) {
+      case "register-email":
+        setregisterDetails({ ...registerDetails, email: value });
+        break;
+      case "register-username":
+        setregisterDetails({ ...registerDetails, username: value });
+        break;
+      case "register-password":
+        setregisterDetails({ ...registerDetails, password: value });
+        break;
+      case "register-password-confirm":
+        setregisterDetails({ ...registerDetails, confirm_password: value });
+        break;
+      case "signin-email":
+        setloginDetails({ ...loginDetails, email: value });
+        break;
+      case "signin-password":
+        setloginDetails({ ...loginDetails, password: value });
+        break;
+      default:
+        break;
     }
-    if (name == "singin-password") setPassword(value);
+    console.log(registerDetails);
   };
   return (
     <main className="main">
@@ -67,21 +102,23 @@ export const AuthScreen = () => {
                   role="tabpanel"
                   aria-labelledby="signin-tab-2"
                 >
-                  <form onSubmit={handleSubmit}>
+                  <form>
                     <div className="form-group">
-                      <label for="singin-email-2">Mobile Number *</label>
+                      <label htmlFor="singin-email-2">
+                        Enter your E-mail *
+                      </label>
                       <input
-                        type="Number"
+                        type="email"
                         className="form-control"
                         id="singin-email-2"
-                        name="phone"
+                        name="signin-email"
                         required
                         onChange={handleChange}
                       />
                     </div>
 
                     <div className="form-group">
-                      <label for="singin-password-2">Password *</label>
+                      <label htmlFor="singin-password-2">Password *</label>
                       <input
                         type="password"
                         className="form-control"
@@ -94,6 +131,7 @@ export const AuthScreen = () => {
 
                     <div className="form-footer">
                       <button
+                        onClick={() => handleLogin()}
                         type="submit"
                         className="btn btn-outline-primary-2"
                       >
@@ -109,7 +147,7 @@ export const AuthScreen = () => {
                         />
                         <label
                           className="custom-control-label"
-                          for="signin-remember-2"
+                          htmlFor="signin-remember-2"
                         >
                           Remember Me
                         </label>
@@ -144,9 +182,11 @@ export const AuthScreen = () => {
                   role="tabpanel"
                   aria-labelledby="register-tab-2"
                 >
-                  <form action="#">
+                  <form method="POST">
                     <div className="form-group">
-                      <label for="register-email-2">Your email address *</label>
+                      <label htmlFor="register-email-2">
+                        Your email address *
+                      </label>
                       <input
                         type="email"
                         className="form-control"
@@ -157,7 +197,7 @@ export const AuthScreen = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label for="register-email-2">
+                      <label htmlFor="register-email-2">
                         Enter your username *
                       </label>
                       <input
@@ -170,7 +210,7 @@ export const AuthScreen = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label for="register-email-2">Password *</label>
+                      <label htmlFor="register-email-2">Password *</label>
                       <input
                         type="password"
                         className="form-control"
@@ -181,7 +221,7 @@ export const AuthScreen = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label for="register-password-2">
+                      <label htmlFor="register-password-2">
                         Confirm Password *
                       </label>
                       <input
@@ -196,7 +236,8 @@ export const AuthScreen = () => {
 
                     <div className="form-footer">
                       <button
-                        type="submit"
+                        onClick={() => handleRegistration()}
+                        type="button"
                         className="btn btn-outline-primary-2"
                       >
                         <span>SIGN UP</span>
@@ -212,7 +253,7 @@ export const AuthScreen = () => {
                         />
                         <label
                           className="custom-control-label"
-                          for="register-policy-2"
+                          htmlFor="register-policy-2"
                         >
                           I agree to the <a href="#">privacy policy</a> *
                         </label>
