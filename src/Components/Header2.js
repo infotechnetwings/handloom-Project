@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeCart, removeWishlist } from "../redux/actions/productsActions";
@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 export const Header2 = () => {
   const product = useSelector((state) => state.cart);
   const wishlist_product = useSelector((state) => state.wishlist);
+  const [token, setToken] = useState();
   const dispatch = useDispatch();
   const [searchProduct, setSearchProduct] = useState([
     {
@@ -95,7 +96,7 @@ export const Header2 = () => {
               <Link to="/" className="logo">
                 <img
                   src="assets/img/logo.png"
-                  alt="Molla Logo"
+                  alt="Logo"
                   width="105"
                   height="25"
                 />
@@ -110,29 +111,36 @@ export const Header2 = () => {
                   <li>
                     <Link to="/product">Product</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to="/product">Offers</Link>
                   </li>
                   <li>
                     <Link to="/product">Blogs</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to="/product">About Us</Link>
                   </li>
+                  {localStorage.getItem("jwt") ? (
+                    <li>
+                      <Link to="/dashboard">Dashboard</Link>
+                    </li>
+                  ) : (
+                    <li></li>
+                  )}
                 </ul>
               </nav>
             </div>
 
             <div className="header-right">
               <div className="header-search">
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="search-toggle"
                   role="button"
                   title="Search"
                 >
                   <i className="icon-search"></i>
-                </a>
+                </Link>
                 <form action="#" method="get">
                   <div className="header-search-wrapper">
                     <label htmlFor="q" className="sr-only">
@@ -151,8 +159,8 @@ export const Header2 = () => {
               </div>
 
               <div className="dropdown cart-dropdown">
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="dropdown-toggle"
                   role="button"
                   data-toggle="dropdown"
@@ -162,17 +170,17 @@ export const Header2 = () => {
                 >
                   <i className="icon-heart-o"></i>
                   <span className="cart-count">{wishlist_product.length}</span>
-                </a>
+                </Link>
 
                 <div className="dropdown-menu dropdown-menu-right">
                   <div className="dropdown-cart-products">
                     {wishlist_product.map((item) => {
                       wishlist_total += item.price * item.qty;
                       return (
-                        <div className="product">
+                        <div className="product" key={item.id}>
                           <div className="product-cart-details">
                             <h4 className="product-title">
-                              <a href="product.html">{item.title}</a>
+                              <Link to="/product">{item.title}</Link>
                             </h4>
 
                             <span className="cart-product-info">
@@ -184,11 +192,12 @@ export const Header2 = () => {
                           </div>
 
                           <figure className="product-image-container">
-                            <a href="product.html" className="product-image">
+                            <Link to="/product" className="product-image">
                               <img src={item.image} alt="product" />
-                            </a>
+                            </Link>
                           </figure>
                           <Link
+                            to="/"
                             onClick={() => dispatch(removeWishlist(item))}
                             className="btn-remove"
                             title="Remove Product"
@@ -218,8 +227,8 @@ export const Header2 = () => {
               </div>
 
               <div className="dropdown cart-dropdown">
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="dropdown-toggle"
                   role="button"
                   data-toggle="dropdown"
@@ -229,7 +238,7 @@ export const Header2 = () => {
                 >
                   <i className="icon-shopping-cart"></i>
                   <span className="cart-count">{product.length}</span>
-                </a>
+                </Link>
 
                 <div className="dropdown-menu dropdown-menu-right">
                   <div className="dropdown-cart-products">
@@ -239,7 +248,7 @@ export const Header2 = () => {
                         <div className="product" key={item.id}>
                           <div className="product-cart-details">
                             <h4 className="product-title">
-                              <a href="product.html">{item.title}</a>
+                              <Link to="/product">{item.title}</Link>
                             </h4>
 
                             <span className="cart-product-info">
@@ -252,11 +261,12 @@ export const Header2 = () => {
                           </div>
 
                           <figure className="product-image-container">
-                            <Link to="product.html" className="product-image">
+                            <Link to="/product" className="product-image">
                               <img src={item.image} alt="product" />
                             </Link>
                           </figure>
                           <Link
+                            to="/"
                             onClick={() => {
                               dispatch(removeCart(item));
                               notify();
@@ -290,23 +300,27 @@ export const Header2 = () => {
                   </div>
                 </div>
               </div>
-              <div
-                className="d-none d-lg-block"
-                style={{
-                  // display: "none",
-                  paddingBottom: 8,
-                  paddingTop: 8,
-                  paddingLeft: 20,
-                  paddingRight: 20,
-                  backgroundColor: "#cc6666",
-                  marginLeft: 15,
-                }}
-              >
-                <Link to="/register" data-toggle="modal">
-                  <i className="icon-user" style={{ color: "#fff" }}></i>
-                  <span style={{ color: "#fff" }}>Login</span>
-                </Link>
-              </div>
+              {localStorage.getItem("jwt") ? (
+                <div></div>
+              ) : (
+                <div
+                  className="d-none d-lg-block"
+                  style={{
+                    // display: "none",
+                    paddingBottom: 8,
+                    paddingTop: 8,
+                    paddingLeft: 20,
+                    paddingRight: 20,
+                    backgroundColor: "#cc6666",
+                    marginLeft: 15,
+                  }}
+                >
+                  <Link to="/register" data-toggle="modal">
+                    <i className="icon-user" style={{ color: "#fff" }}></i>
+                    <span style={{ color: "#fff" }}>Login</span>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

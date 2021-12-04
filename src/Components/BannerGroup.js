@@ -10,16 +10,16 @@ export const BannerGroup = () => {
         <div className="row">
           <div className="col-6 col-lg-4">
             <div className="banner banner-display banner-link-anim">
-              <a href="#">
+              <Link to="/">
                 <img
                   src="assets/images/banners/home/banner-1.jpg"
                   alt="Banner"
                 />
-              </a>
+              </Link>
 
               <div className="banner-content banner-content-center">
                 <h3 className="banner-title text-white">
-                  <a href="#">Outdoor</a>
+                  <Link to="/">Outdoor</Link>
                 </h3>
                 <Link
                   to="/"
@@ -34,16 +34,16 @@ export const BannerGroup = () => {
 
           <div className="col-6 col-lg-4 order-lg-last">
             <div className="banner banner-display banner-link-anim">
-              <a href="#">
+              <Link to="/">
                 <img
                   src="assets/images/banners/home/banner-4.jpg"
                   alt="Banner"
                 />
-              </a>
+              </Link>
 
               <div className="banner-content banner-content-center">
                 <h3 className="banner-title text-white">
-                  <a href="#">Lighting</a>
+                  <Link to="/">Lighting</Link>
                 </h3>
 
                 <Link
@@ -60,16 +60,16 @@ export const BannerGroup = () => {
           <div className="col-sm-12 col-lg-4 banners-sm">
             <div className="row">
               <div className="banner banner-display banner-link-anim col-lg-12 col-6">
-                <a href="#">
+                <Link to="/">
                   <img
                     src="assets/images/banners/home/banner-2.jpg"
                     alt="Banner"
                   />
-                </a>
+                </Link>
 
                 <div className="banner-content banner-content-center">
                   <h3 className="banner-title text-white">
-                    <a href="#">Furniture and Design</a>
+                    <Link to="/">Furniture and Design</Link>
                   </h3>
 
                   <Link
@@ -83,16 +83,16 @@ export const BannerGroup = () => {
               </div>
 
               <div className="banner banner-display banner-link-anim col-lg-12 col-6">
-                <a href="#">
+                <Link to="/">
                   <img
                     src="assets/images/banners/home/banner-3.jpg"
                     alt="Banner"
                   />
-                </a>
+                </Link>
 
                 <div className="banner-content banner-content-center">
                   <h3 className="banner-title text-white">
-                    <a href="#">Kitchen & Utensil</a>
+                    <Link to="/">Kitchen & Utensil</Link>
                   </h3>
 
                   <Link

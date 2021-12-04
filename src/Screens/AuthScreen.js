@@ -1,35 +1,52 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
+import { userSignin } from "../redux/actions/productsActions";
 
 export const AuthScreen = () => {
-  const [user, setUser] = useState({});
+  const dispatch = useDispatch();
   const [loginDetails, setloginDetails] = useState({
     email: "",
     password: "",
+    redirect: false,
+    loading: false,
   });
   const [registerDetails, setregisterDetails] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
     confirm_password: "",
   });
-  const handleLogin = () => {};
+  const handleLogin = () => {
+    notify();
+    const url = "http://localhost:8000/signin";
+    axios
+      .post(url, loginDetails)
+      .then((res) => {
+        console.log(res.data);
+        dispatch(userSignin(res.data.user));
+        localStorage.setItem("jwt", res.data.token);
+      })
+      .catch((err) => console.log(err, "error in sending post request"));
+    setloginDetails({ redirect: true });
+  };
   const handleRegistration = () => {
-    const url = "https://www.admin.pilkhuwahandloom.com/api/register";
+    notify();
+    const url = `http://localhost:8000/signup`;
     if (registerDetails.password === registerDetails.confirm_password) {
       const formdata = new FormData();
       formdata.append("email", registerDetails.email);
       formdata.append("password", registerDetails.password);
       formdata.append("name", registerDetails.username);
       axios
-        .post(url, formdata)
+        .post(url, registerDetails)
         .then((res) => {
           if (res.data === "Already Registered") {
             console.log("Already Registered !");
           } else {
             console.log("Registered Sucessfully", res.data);
-            setUser(res.data);
           }
         })
         .catch((err) => console.log(err, "error in sending post request"));
@@ -42,7 +59,7 @@ export const AuthScreen = () => {
         setregisterDetails({ ...registerDetails, email: value });
         break;
       case "register-username":
-        setregisterDetails({ ...registerDetails, username: value });
+        setregisterDetails({ ...registerDetails, name: value });
         break;
       case "register-password":
         setregisterDetails({ ...registerDetails, password: value });
@@ -53,14 +70,31 @@ export const AuthScreen = () => {
       case "signin-email":
         setloginDetails({ ...loginDetails, email: value });
         break;
-      case "signin-password":
+      case "singin-password":
         setloginDetails({ ...loginDetails, password: value });
         break;
       default:
         break;
     }
     console.log(registerDetails);
+    console.log(loginDetails);
   };
+  const notify = async () => {
+    const resolveAfter3Sec = new Promise((resolve) =>
+      setTimeout(resolve, 3000)
+    );
+
+    toast.promise(resolveAfter3Sec, {
+      pending: "Please wait while registering ",
+      success: "Register successfully",
+      error: "Error while registering",
+    });
+  };
+
+  if (loginDetails.redirect) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <main className="main">
       <div className="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17">
@@ -102,7 +136,7 @@ export const AuthScreen = () => {
                   role="tabpanel"
                   aria-labelledby="signin-tab-2"
                 >
-                  <form>
+                  <form method="POST">
                     <div className="form-group">
                       <label htmlFor="singin-email-2">
                         Enter your E-mail *
@@ -132,7 +166,7 @@ export const AuthScreen = () => {
                     <div className="form-footer">
                       <button
                         onClick={() => handleLogin()}
-                        type="submit"
+                        type="button"
                         className="btn btn-outline-primary-2"
                       >
                         <span>LOG IN</span>

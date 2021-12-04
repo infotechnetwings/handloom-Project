@@ -1,13 +1,19 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import ReactLoading from "react-loading";
+import { emptyCart } from "../redux/actions/productsActions";
 
 export const CheckoutScreen = () => {
+  const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
   const product = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
   const location = useLocation();
   const [loading, setloading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
   const [checkoutDetail, setCheckoutDetail] = useState({
     firstName: "",
     lastName: "",
@@ -18,6 +24,7 @@ export const CheckoutScreen = () => {
     phone: "",
     email: "",
     account: "",
+    amount: "",
   });
   var total = 0;
   useEffect(() => {
@@ -93,29 +100,57 @@ export const CheckoutScreen = () => {
       alert("Razorpay SDK failed to load. Are you online?");
       return;
     }
+    checkoutDetail.amount = total;
 
-    const data = await fetch(
-      "https://www.admin.pilkhuwahandloom.com/api/razorpay",
-      {
-        method: "POST",
-        data: { checkoutDetail, product, total },
-      }
-    ).then((t) => t.json());
+    const url = "http://localhost:8000/razorpay";
+    const response = await axios
+      .post(url, checkoutDetail, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      })
+      .catch((e) => console.log(e));
 
-    console.log(data);
+    console.log(response);
 
     const options = {
-      key: "KEY",
-      currency: data.currency,
-      amount: data.amount.toString(),
-      order_id: data.id,
+      key: "rzp_test_DFIt4Gbc8aM1KR",
+      currency: response.data.order.currency,
+      amount: response.data.order.amount,
+      order_id: response.data.order.id,
       name: "Pilakhuwa Handloom",
       description: "Thank you for buying",
       image: "https://www.admin.pilkhuwahandloom.com/api/logo.png",
-      handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+      handler: function (responseh) {
+        console.log(responseh.razorpay_payment_id);
+        console.log(responseh.razorpay_order_id);
+        console.log(responseh.razorpay_signature);
+        const url = `http://localhost:8000/order/create/${user._id}`;
+
+        const orderData = {
+          order: {
+            transaction_id: responseh.razorpay_payment_id,
+            amount: response.data.order.amount,
+            user: user._id,
+            product: product.id,
+          },
+        };
+        axios
+          .post(url, orderData, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+            },
+          })
+          .then((result) => {
+            console.log("successfully uploaded order data");
+            localStorage.setItem("order", result);
+            dispatch(emptyCart());
+            setloading(false);
+            setRedirect(true);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       },
       prefill: {
         name: checkoutDetail.firstName + checkoutDetail.lastName,
@@ -126,9 +161,16 @@ export const CheckoutScreen = () => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   }
+  if (redirect) {
+    return <Redirect to="/" />;
+  }
+
+  if (loading) {
+    <ReactLoading type="spin" color="#cc9966" height={667} width={375} />;
+  }
   return (
     <main className="main">
-      {loading ? <div>Processing your payment</div> : <div>deepka</div>}
+      {/* {loading ? <div>Processing your payment</div> : <div>deepka</div>} */}
       <div className="page-header text-center">
         <div className="container">
           <h1 className="page-title">

@@ -45,10 +45,10 @@ export const ProductScreen = () => {
         <div className="container">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="index.html">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="breadcrumb-item">
-              <a href="#">Product</a>
+              <Link to="/product">Product</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               All
@@ -140,7 +140,9 @@ export const ProductScreen = () => {
 
                           <div className="product-body">
                             <div className="product-cat">
-                              <a href="#">{item.category}</a>
+                              <Link to={`/productdetail/${item.id}`}>
+                                {item.category}
+                              </Link>
                             </div>
 
                             <h3 className="product-title">
@@ -167,16 +169,16 @@ export const ProductScreen = () => {
                             </div>
 
                             <div className="product-nav product-nav-thumbs">
-                              <a href="#" className="active">
+                              <Link to="#" className="active">
                                 <img src={item.image} alt="product desc" />
-                              </a>
-                              <a href="#">
+                              </Link>
+                              <Link to="#">
                                 <img src={item.image} alt="product desc" />
-                              </a>
+                              </Link>
 
-                              <a href="#">
+                              <Link to="#">
                                 <img src={item.image} alt="product desc" />
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </div>
@@ -189,9 +191,9 @@ export const ProductScreen = () => {
               <nav aria-label="Page navigation">
                 <ul className="pagination">
                   <li className="page-item disabled">
-                    <a
+                    <Link
                       className="page-link page-link-prev"
-                      href="#"
+                      to="#"
                       aria-label="Previous"
                       tabIndex="-1"
                       aria-disabled="true"
@@ -200,35 +202,35 @@ export const ProductScreen = () => {
                         <i className="icon-long-arrow-left"></i>
                       </span>
                       Prev
-                    </a>
+                    </Link>
                   </li>
                   <li className="page-item active" aria-current="page">
-                    <a className="page-link" href="#">
+                    <Link className="page-link" to="#">
                       1
-                    </a>
+                    </Link>
                   </li>
                   <li className="page-item">
-                    <a className="page-link" href="#">
+                    <Link className="page-link" to="#">
                       2
-                    </a>
+                    </Link>
                   </li>
                   <li className="page-item">
-                    <a className="page-link" href="#">
+                    <Link className="page-link" to="#">
                       3
-                    </a>
+                    </Link>
                   </li>
                   <li className="page-item-total">of 6</li>
                   <li className="page-item">
-                    <a
+                    <Link
                       className="page-link page-link-next"
-                      href="#"
+                      to="#"
                       aria-label="Next"
                     >
                       Next
                       <span aria-hidden="true">
                         <i className="icon-long-arrow-right"></i>
                       </span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
@@ -238,22 +240,22 @@ export const ProductScreen = () => {
               <div className="sidebar sidebar-shop">
                 <div className="widget widget-clean">
                   <label>Filters:</label>
-                  <a href="#" className="sidebar-filter-clear">
+                  <Link to="#" className="sidebar-filter-clear">
                     Clean All
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="widget widget-collapsible">
                   <h3 className="widget-title">
-                    <a
+                    <Link
                       data-toggle="collapse"
-                      href="#widget-1"
+                      to="#widget-1"
                       role="button"
                       aria-expanded="true"
                       aria-controls="widget-1"
                     >
                       Category
-                    </a>
+                    </Link>
                   </h3>
 
                   <div className="collapse show" id="widget-1">
@@ -410,15 +412,15 @@ export const ProductScreen = () => {
 
                 <div className="widget widget-collapsible">
                   <h3 className="widget-title">
-                    <a
+                    <Link
                       data-toggle="collapse"
-                      href="#widget-2"
+                      to="#widget-2"
                       role="button"
                       aria-expanded="true"
                       aria-controls="widget-2"
                     >
                       Price
-                    </a>
+                    </Link>
                   </h3>
 
                   <div className="collapse show" id="widget-2">
@@ -526,48 +528,48 @@ export const ProductScreen = () => {
 
                 <div className="widget widget-collapsible">
                   <h3 className="widget-title">
-                    <a
+                    <Link
                       data-toggle="collapse"
-                      href="#widget-3"
+                      to="#widget-3"
                       role="button"
                       aria-expanded="true"
                       aria-controls="widget-3"
                     >
                       Colour
-                    </a>
+                    </Link>
                   </h3>
 
                   <div className="collapse show" id="widget-3">
                     <div className="widget-body">
                       <div className="filter-colors">
-                        <a href="#" style={{ background: "#b87145" }}>
+                        <Link to="#" style={{ background: "#b87145" }}>
                           <span className="sr-only">Color Name</span>
-                        </a>
-                        <a href="#" style={{ background: "#f0c04a" }}>
+                        </Link>
+                        <Link to="#" style={{ background: "#f0c04a" }}>
                           <span className="sr-only">Color Name</span>
-                        </a>
-                        <a href="#" style={{ background: "#333333" }}>
+                        </Link>
+                        <Link to="#" style={{ background: "#333333" }}>
                           <span className="sr-only">Color Name</span>
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="#"
                           className="selected"
                           style={{ background: "#cc3333" }}
                         >
                           <span className="sr-only">Color Name</span>
-                        </a>
-                        <a href="#" style={{ background: "#3399cc" }}>
+                        </Link>
+                        <Link to="#" style={{ background: "#3399cc" }}>
                           <span className="sr-only">Color Name</span>
-                        </a>
-                        <a href="#" style={{ background: "#669933" }}>
+                        </Link>
+                        <Link to="#" style={{ background: "#669933" }}>
                           <span className="sr-only">Color Name</span>
-                        </a>
-                        <a href="#" style={{ background: "#f2719c" }}>
+                        </Link>
+                        <Link to="#" style={{ background: "#f2719c" }}>
                           <span className="sr-only">Color Name</span>
-                        </a>
-                        <a href="#" style={{ background: "#ebebeb" }}>
+                        </Link>
+                        <Link to="#" style={{ background: "#ebebeb" }}>
                           <span className="sr-only">Color Name</span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -575,15 +577,15 @@ export const ProductScreen = () => {
 
                 <div className="widget widget-collapsible">
                   <h3 className="widget-title">
-                    <a
+                    <Link
                       data-toggle="collapse"
-                      href="#widget-4"
+                      to="#widget-4"
                       role="button"
                       aria-expanded="true"
                       aria-controls="widget-4"
                     >
                       Brand
-                    </a>
+                    </Link>
                   </h3>
 
                   <div className="collapse show" id="widget-4">

@@ -13,31 +13,31 @@ export const WishlistScreen = () => {
     window.scrollTo(0, 0);
   }, [location]);
   return (
-    <main class="main">
-      <div class="page-header text-center">
-        <div class="container">
-          <h1 class="page-title">
+    <main className="main">
+      <div className="page-header text-center">
+        <div className="container">
+          <h1 className="page-title">
             Wishlist<span>Pilakhuwa Handloom</span>
           </h1>
         </div>
       </div>
-      <nav aria-label="breadcrumb" class="breadcrumb-nav">
-        <div class="container">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
+      <nav aria-label="breadcrumb" className="breadcrumb-nav">
+        <div className="container">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
               <a href="index.html">Home</a>
             </li>
 
-            <li class="breadcrumb-item active" aria-current="page">
+            <li className="breadcrumb-item active" aria-current="page">
               Wishlist
             </li>
           </ol>
         </div>
       </nav>
 
-      <div class="page-content">
-        <div class="container">
-          <table class="table table-wishlist table-mobile">
+      <div className="page-content">
+        <div className="container">
+          <table className="table table-wishlist table-mobile">
             <thead>
               <tr>
                 <th>Product</th>
@@ -52,39 +52,39 @@ export const WishlistScreen = () => {
               {wishlist_product.map((item) => {
                 return (
                   <tr>
-                    <td class="product-col">
-                      <div class="product">
-                        <figure class="product-media">
+                    <td className="product-col">
+                      <div className="product">
+                        <figure className="product-media">
                           <a href="#">
                             <img src={item.image} alt="Product image" />
                           </a>
                         </figure>
 
-                        <h3 class="product-title">
+                        <h3 className="product-title">
                           <Link to={`productdetail/${item.id}`}>
                             {item.title}
                           </Link>
                         </h3>
                       </div>
                     </td>
-                    <td class="price-col">{item.price}</td>
-                    <td class="stock-col">
-                      <span class="in-stock">In stock</span>
+                    <td className="price-col">{item.price}</td>
+                    <td className="stock-col">
+                      <span className="in-stock">In stock</span>
                     </td>
-                    <td class="action-col">
+                    <td className="action-col">
                       <button
-                        class="btn btn-block btn-outline-primary-2"
+                        className="btn btn-block btn-outline-primary-2"
                         onClick={() => dispatch(addToCart(item))}
                       >
-                        <i class="icon-cart-plus"></i>Add to Cart
+                        <i className="icon-cart-plus"></i>Add to Cart
                       </button>
                     </td>
-                    <td class="remove-col">
+                    <td className="remove-col">
                       <button
-                        class="btn-remove"
+                        className="btn-remove"
                         onClick={() => dispatch(removeWishlist(item))}
                       >
-                        <i class="icon-close"></i>
+                        <i className="icon-close"></i>
                       </button>
                     </td>
                   </tr>
@@ -92,23 +92,48 @@ export const WishlistScreen = () => {
               })}
             </tbody>
           </table>
-          <div class="wishlist-share">
-            <div class="social-icons social-icons-sm mb-2">
-              <label class="social-label">Share on:</label>
-              <a href="#" class="social-icon" title="Facebook" target="_blank">
-                <i class="icon-facebook-f"></i>
+          <div className="wishlist-share">
+            <div className="social-icons social-icons-sm mb-2">
+              <label className="social-label">Share on:</label>
+              <a
+                href="#"
+                className="social-icon"
+                title="Facebook"
+                target="_blank"
+              >
+                <i className="icon-facebook-f"></i>
               </a>
-              <a href="#" class="social-icon" title="Twitter" target="_blank">
-                <i class="icon-twitter"></i>
+              <a
+                href="#"
+                className="social-icon"
+                title="Twitter"
+                target="_blank"
+              >
+                <i className="icon-twitter"></i>
               </a>
-              <a href="#" class="social-icon" title="Instagram" target="_blank">
-                <i class="icon-instagram"></i>
+              <a
+                href="#"
+                className="social-icon"
+                title="Instagram"
+                target="_blank"
+              >
+                <i className="icon-instagram"></i>
               </a>
-              <a href="#" class="social-icon" title="Youtube" target="_blank">
-                <i class="icon-youtube"></i>
+              <a
+                href="#"
+                className="social-icon"
+                title="Youtube"
+                target="_blank"
+              >
+                <i className="icon-youtube"></i>
               </a>
-              <a href="#" class="social-icon" title="Pinterest" target="_blank">
-                <i class="icon-pinterest"></i>
+              <a
+                href="#"
+                className="social-icon"
+                title="Pinterest"
+                target="_blank"
+              >
+                <i className="icon-pinterest"></i>
               </a>
             </div>
           </div>

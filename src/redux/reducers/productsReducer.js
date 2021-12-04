@@ -5,6 +5,8 @@ const intialState = {
 var cart = [];
 var wishlist = [];
 var filterProduct = [];
+var user = [];
+
 export const productsReducer = (state = intialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.SET_PRODUCTS:
@@ -52,7 +54,8 @@ export const addToCartReducer = (state = cart, { type, payload }) => {
           return x.id === payload.id ? { ...x, qty: x.qty - 1 } : x;
         });
       }
-
+    case ActionTypes.EMPTY_CART:
+      return (state = []);
     default:
       return state;
   }
@@ -98,9 +101,20 @@ export const filterProductReducer = (
   switch (type) {
     case ActionTypes.FILTER_PRODUCT:
       filterProduct = intialState.products.filter((item) => {
-        return item.category == payload;
+        return item.category === payload;
       });
       return filterProduct;
+    default:
+      return state;
+  }
+};
+
+export const userAuth = (state = user, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.USER_SIGNIN:
+      return (state = payload);
+    case ActionTypes.USER_SIGNOUT:
+      return (state = []);
     default:
       return state;
   }

@@ -25,6 +25,12 @@ export const addToCart = (product) => {
   };
 };
 
+export const emptyCart = () => {
+  return {
+    type: ActionTypes.EMPTY_CART,
+  };
+};
+
 export const addToWishlist = (product) => {
   return {
     type: ActionTypes.ADD_TO_WISHLIST,
@@ -49,5 +55,19 @@ export const removeWishlist = (product) => {
 export const filteredProduct = (category) => {
   return {
     type: ActionTypes.FILTER_PRODUCT,
+  };
+};
+
+export const userSignin = (user) => {
+  return {
+    type: ActionTypes.USER_SIGNIN,
+    payload: user,
+  };
+};
+
+export const userSignout = (user) => {
+  return {
+    type: ActionTypes.USER_SIGNOUT,
+    payload: user,
   };
 };
